@@ -1,4 +1,4 @@
-package models
+package testlink
 
 type CustomField struct {
 	Id                     int    `json:"id"`

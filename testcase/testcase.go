@@ -4,9 +4,6 @@ import (
 	"context"
 	"github.com/divan/gorilla-xmlrpc/xml"
 	"github.com/ninteen19/testlink-go-api"
-	"github.com/ninteen19/testlink-go-api/constants"
-	"github.com/ninteen19/testlink-go-api/enums"
-	"github.com/ninteen19/testlink-go-api/models"
 	"github.com/ninteen19/testlink-go-api/outbounds"
 	"net/http"
 )
@@ -24,19 +21,19 @@ func Create(
 	testProjectId int,
 	authorLogin string,
 	summary string,
-	steps []models.TestCaseStep,
+	steps []testlink.TestCaseStep,
 	preconditions string,
-	status enums.TestCaseStatus,
-	importance enums.TestImportance,
-	execution enums.ExecutionType,
+	status testlink.TestCaseStatus,
+	importance testlink.TestImportance,
+	execution testlink.ExecutionType,
 	order int,
 	internalId int,
 	checkDuplicatedName bool,
-	actionOnDuplicatedName enums.ActionOnDuplicate,
-) (*models.TestCase, error) {
+	actionOnDuplicatedName testlink.ActionOnDuplicate,
+) (*testlink.TestCase, error) {
 	var id int
 
-	testCase := &models.TestCase{
+	testCase := &testlink.TestCase{
 		Id:                     id,
 		Name:                   testCaseName,
 		TestSuiteId:            testSuiteId,
@@ -66,7 +63,7 @@ func Create(
 	}
 
 	executionData := testCase.ToMap()
-	resp, err := outbound.TestLinkXmlRpcCall(constants.CreateTestCase, executionData)
+	resp, err := outbound.TestLinkXmlRpcCall(testlink.TestLinkMethodCreateTestCase, executionData)
 
 	if err != nil {
 		return nil, err
@@ -95,19 +92,19 @@ func CreateWithContext(
 	testProjectId int,
 	authorLogin string,
 	summary string,
-	steps []models.TestCaseStep,
+	steps []testlink.TestCaseStep,
 	preconditions string,
-	status enums.TestCaseStatus,
-	importance enums.TestImportance,
-	execution enums.ExecutionType,
+	status testlink.TestCaseStatus,
+	importance testlink.TestImportance,
+	execution testlink.ExecutionType,
 	order int,
 	internalId int,
 	checkDuplicatedName bool,
-	actionOnDuplicatedName enums.ActionOnDuplicate,
-) (*models.TestCase, error) {
+	actionOnDuplicatedName testlink.ActionOnDuplicate,
+) (*testlink.TestCase, error) {
 	var id int
 
-	testCase := &models.TestCase{
+	testCase := &testlink.TestCase{
 		Id:                     id,
 		Name:                   testCaseName,
 		TestSuiteId:            testSuiteId,
@@ -137,7 +134,7 @@ func CreateWithContext(
 	}
 
 	executionData := testCase.ToMap()
-	resp, err := outbound.TestLinkXmlRpcCallWithContext(ctx, constants.CreateTestCase, executionData)
+	resp, err := outbound.TestLinkXmlRpcCallWithContext(ctx, testlink.TestLinkMethodCreateTestCase, executionData)
 
 	if err != nil {
 		return nil, err

@@ -1,4 +1,4 @@
-package models
+package testlink
 
 type Platform struct {
 	Id    int    `json:"id"`
