@@ -9,8 +9,8 @@ import (
 )
 
 type ITestLinkOutbound interface {
-	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, args interface{}) (*http.Response, error)
-	TestLinkXmlRpcCall(method string, args interface{}) (*http.Response, error)
+	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCase) (*http.Response, error)
+	TestLinkXmlRpcCall(method string, testCase *testlink.TestCase) (*http.Response, error)
 }
 
 var outbound ITestLinkOutbound
