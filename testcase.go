@@ -60,13 +60,13 @@ type TestCaseResponse struct {
 }
 
 type TestCaseStep struct {
-	//Id                int           `json:"id"`
-	//TestCaseVersionId int           `json:"testCaseVersionId"`
-	Number          int    `json:"number" xml:"step_number"`
-	Actions         string `json:"actions" xml:"actions"`
-	ExpectedResults string `json:"expectedResults" xml:"expected_results"`
-	//Active            bool          `json:"active"`
-	ExecutionType int `json:"executionType" xml:"execution_type"`
+	Id                int    `json:"id"`
+	TestCaseVersionId int    `json:"testCaseVersionId"`
+	Number            int    `json:"number" xml:"step_number"`
+	Actions           string `json:"actions" xml:"actions"`
+	ExpectedResults   string `json:"expectedResults" xml:"expected_results"`
+	Active            bool   `json:"active"`
+	ExecutionType     int    `json:"executionType" xml:"execution_type"`
 }
 
 //
