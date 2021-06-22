@@ -1,42 +1,43 @@
 package testlink
 
 type TestCase struct {
-	Id                     int               `json:"id"`
-	Name                   string            `json:"name"`
-	TestSuiteId            int               `json:"testSuiteId"`
-	TestProjectId          int               `json:"testProjectId"`
-	AuthorLogin            string            `json:"authorLogin"`
-	Summary                string            `json:"summary"`
-	Steps                  []TestCaseStep    `json:"steps"`
-	Preconditions          string            `json:"preconditions"`
-	TestCaseStatus         TestCaseStatus    `json:"testCaseStatus"`
-	TestImportance         TestImportance    `json:"testImportance"`
-	ExecutionType          ExecutionType     `json:"executionType"`
-	ExecutionOrder         int               `json:"executionOrder"`
-	Order                  int               `json:"order"`
-	InternalId             int               `json:"internalId"`
-	ExternalId             int               `json:"externalId"`
-	FullExternalId         string            `json:"fullExternalId"`
-	CheckDuplicatedName    bool              `json:"checkDuplicatedName"`
-	ActionOnDuplicatedName ActionOnDuplicate `json:"actionOnDuplicatedName"`
-	VersionId              int               `json:"versionId"`
-	Version                int               `json:"version"`
-	ParentId               int               `json:"parentId"`
-	CustomFields           []CustomField     `json:"customFields"`
-	ExecutionStatus        ExecutionStatus   `json:"executionStatus"`
-	Platform               Platform          `json:"platform"`
-	FeatureId              int               `json:"featureId"`
-	Keywords               []string          `json:"keywords"`
+	Id             int            `json:"id" xml:"testcaseid"`
+	Name           string         `json:"name" xml:"testcasename"`
+	TestSuiteId    int            `json:"testSuiteId" xml:"testsuiteid"`
+	TestProjectId  int            `json:"testProjectId" xml:"testprojectid"`
+	AuthorLogin    string         `json:"authorLogin" xml:"authorlogin"`
+	Summary        string         `json:"summary" xml:"summary"`
+	Steps          []TestCaseStep `json:"steps" xml:"steps"`
+	Preconditions  string         `json:"preconditions" xml:"preconditions"`
+	TestCaseStatus TestCaseStatus `json:"testCaseStatus" xml:"status"`
+	TestImportance TestImportance `json:"testImportance" xml:"importance"`
+	ExecutionType  ExecutionType  `json:"executionType" xml:"executiontype"`
+	//ExecutionOrder         int               `json:"executionOrder"`
+	Order      int `json:"order" xml:"order"`
+	InternalId int `json:"internalId" xml:"internalid"`
+	ExternalId int `json:"externalId" xml:"externalid"`
+	//FullExternalId         string            `json:"fullExternalId"`
+	CheckDuplicatedName    bool              `json:"checkDuplicatedName" xml:"checkduplicatedname"`
+	ActionOnDuplicatedName ActionOnDuplicate `json:"actionOnDuplicatedName" xml:"actiononduplicatedname"`
+	//VersionId              int               `json:"versionId" `
+	Version int `json:"version"`
+	//ParentId               int               `json:"parentId"`
+	//CustomFields           []CustomField     `json:"customFields"`
+	//ExecutionStatus        ExecutionStatus   `json:"executionStatus"`
+	//Platform               Platform          `json:"platform"`
+	//FeatureId              int               `json:"featureId"`
+	//Keywords               []string          `json:"keywords"`
+	DevKey string `json:"devKey" xml:"devKey"`
 }
 
 type TestCaseStep struct {
-	Id                int           `json:"id"`
-	TestCaseVersionId int           `json:"testCaseVersionId"`
-	Number            int           `json:"number"`
-	Actions           string        `json:"actions"`
-	ExpectedResults   string        `json:"expectedResults"`
-	Active            bool          `json:"active"`
-	ExecutionType     ExecutionType `json:"executionType"`
+	//Id                int           `json:"id"`
+	//TestCaseVersionId int           `json:"testCaseVersionId"`
+	Number          int    `json:"number" xml:"step_number"`
+	Actions         string `json:"actions" xml:"actions"`
+	ExpectedResults string `json:"expectedResults" xml:"expected_results"`
+	//Active            bool          `json:"active"`
+	ExecutionType ExecutionType `json:"executionType" xml:"execution_type"`
 }
 
 func (t *TestCase) ToMap() map[string]interface{} {

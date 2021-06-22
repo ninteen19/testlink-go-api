@@ -9,8 +9,8 @@ import (
 )
 
 type ITestLinkOutbound interface {
-	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, args map[string]interface{}) (*http.Response, error)
-	TestLinkXmlRpcCall(method string, args map[string]interface{}) (*http.Response, error)
+	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, args interface{}) (*http.Response, error)
+	TestLinkXmlRpcCall(method string, args interface{}) (*http.Response, error)
 }
 
 var outbound ITestLinkOutbound
@@ -45,25 +45,25 @@ func Create(
 		TestCaseStatus:         status,
 		TestImportance:         importance,
 		ExecutionType:          execution,
-		ExecutionOrder:         -1,
+		//ExecutionOrder:         -1,
 		Order:                  order,
 		InternalId:             internalId,
 		ExternalId:             -1,
-		FullExternalId:         "",
+		//FullExternalId:         "",
 		CheckDuplicatedName:    checkDuplicatedName,
 		ActionOnDuplicatedName: actionOnDuplicatedName,
-		VersionId:              -1,
-		Version:                -1,
-		ParentId:               -1,
-		CustomFields:           []testlink.CustomField{},
-		ExecutionStatus:        testlink.ExecutionStatusNotRun,
-		Platform:               testlink.Platform{},
-		FeatureId:              -1,
-		Keywords:               []string{},
+		//VersionId:              -1,
+		//Version:                -1,
+		//ParentId:               -1,
+		//CustomFields:           []testlink.CustomField{},
+		//ExecutionStatus:        testlink.ExecutionStatusNotRun,
+		//Platform:               testlink.Platform{},
+		//FeatureId:              -1,
+		//Keywords:               []string{},
 	}
 
-	executionData := testCase.ToMap()
-	resp, err := outbound.TestLinkXmlRpcCall(testlink.TestLinkMethodCreateTestCase, executionData)
+	//executionData := testCase.ToMap()
+	resp, err := outbound.TestLinkXmlRpcCall(testlink.TestLinkMethodCreateTestCase, testCase)
 
 	if err != nil {
 		return nil, err
@@ -116,25 +116,25 @@ func CreateWithContext(
 		TestCaseStatus:         status,
 		TestImportance:         importance,
 		ExecutionType:          execution,
-		ExecutionOrder:         -1,
+		//ExecutionOrder:         -1,
 		Order:                  order,
 		InternalId:             internalId,
 		ExternalId:             -1,
-		FullExternalId:         "",
+		//FullExternalId:         "",
 		CheckDuplicatedName:    checkDuplicatedName,
 		ActionOnDuplicatedName: actionOnDuplicatedName,
-		VersionId:              -1,
+		//VersionId:              -1,
 		Version:                -1,
-		ParentId:               -1,
-		CustomFields:           []testlink.CustomField{},
-		ExecutionStatus:        testlink.ExecutionStatusNotRun,
-		Platform:               testlink.Platform{},
-		FeatureId:              -1,
-		Keywords:               []string{},
+		//ParentId:               -1,
+		//CustomFields:           []testlink.CustomField{},
+		//ExecutionStatus:        testlink.ExecutionStatusNotRun,
+		//Platform:               testlink.Platform{},
+		//FeatureId:              -1,
+		//Keywords:               []string{},
 	}
 
-	executionData := testCase.ToMap()
-	resp, err := outbound.TestLinkXmlRpcCallWithContext(ctx, testlink.TestLinkMethodCreateTestCase, executionData)
+	//executionData := testCase.ToMap()
+	resp, err := outbound.TestLinkXmlRpcCallWithContext(ctx, testlink.TestLinkMethodCreateTestCase, testCase)
 
 	if err != nil {
 		return nil, err

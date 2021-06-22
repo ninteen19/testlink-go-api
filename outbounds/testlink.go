@@ -13,18 +13,17 @@ type TestLinkOutbound struct {
 }
 
 //ignore ctx for now
-func (o *TestLinkOutbound) TestLinkXmlRpcCallWithContext(ctx context.Context, method string, args map[string]interface{}) (*http.Response, error) {
-	buf, _ := xml.EncodeClientRequest(method, &args)
-	if len(args) > 0 {
-		args[testlink.TestLinkParamDevKey] = o.Config.Key
-	}
+func (o *TestLinkOutbound) TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase testlink.TestCase) (*http.Response, error) {
+	testCase.DevKey = o.Config.Key
+	buf, _ := xml.EncodeClientRequest(method, &testCase)
+	//if len(args) > 0 {
+	//	args[testlink.TestLinkParamDevKey] = o.Config.Key
+	//}
 	return http.Post(o.Config.Url, "text/xml", bytes.NewBuffer(buf))
 }
 
-func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, args map[string]interface{}) (*http.Response, error) {
-	buf, _ := xml.EncodeClientRequest(method, &args)
-	if len(args) > 0 {
-		args[testlink.TestLinkParamDevKey] = o.Config.Key
-	}
+func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, testCase testlink.TestCase) (*http.Response, error) {
+	testCase.DevKey = o.Config.Key
+	buf, _ := xml.EncodeClientRequest(method, &testCase)
 	return http.Post(o.Config.Url, "text/xml", bytes.NewBuffer(buf))
 }
