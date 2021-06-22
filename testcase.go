@@ -1,24 +1,24 @@
 package testlink
 
 type TestCaseRequest struct {
-	Id             int            `json:"id" xml:"testcaseid"`
-	Name           string         `json:"name" xml:"testcasename"`
-	TestSuiteId    int            `json:"testSuiteId" xml:"testsuiteid"`
-	TestProjectId  int            `json:"testProjectId" xml:"testprojectid"`
-	AuthorLogin    string         `json:"authorLogin" xml:"authorlogin"`
-	Summary        string         `json:"summary" xml:"summary"`
-	Steps          []TestCaseStep `json:"steps" xml:"steps"`
-	Preconditions  string         `json:"preconditions" xml:"preconditions"`
-	TestCaseStatus int            `json:"testCaseStatus" xml:"status"`
-	TestImportance int            `json:"testImportance" xml:"importance"`
-	ExecutionType  int            `json:"executionType" xml:"executiontype"`
+	Id             int            `json:"id" xmlrpc:"testcaseid"`
+	Name           string         `json:"name" xmlrpc:"testcasename"`
+	TestSuiteId    int            `json:"testSuiteId" xmlrpc:"testsuiteid"`
+	TestProjectId  int            `json:"testProjectId" xmlrpc:"testprojectid"`
+	AuthorLogin    string         `json:"authorLogin" xmlrpc:"authorlogin"`
+	Summary        string         `json:"summary" xmlrpc:"summary"`
+	Steps          []TestCaseStep `json:"steps" xmlrpc:"steps"`
+	Preconditions  string         `json:"preconditions" xmlrpc:"preconditions"`
+	TestCaseStatus int            `json:"testCaseStatus" xmlrpc:"status"`
+	TestImportance int            `json:"testImportance" xmlrpc:"importance"`
+	ExecutionType  int            `json:"executionType" xmlrpc:"executiontype"`
 	//ExecutionOrder         int               `json:"executionOrder"`
-	Order      int `json:"order" xml:"order"`
-	InternalId int `json:"internalId" xml:"internalid"`
-	ExternalId int `json:"externalId" xml:"externalid"`
+	Order      int `json:"order" xmlrpc:"order"`
+	InternalId int `json:"internalId" xmlrpc:"internalid"`
+	ExternalId int `json:"externalId" xmlrpc:"externalid"`
 	//FullExternalId         string            `json:"fullExternalId"`
-	CheckDuplicatedName    bool `json:"checkDuplicatedName" xml:"checkduplicatedname"`
-	ActionOnDuplicatedName int  `json:"actionOnDuplicatedName" xml:"actiononduplicatedname"`
+	CheckDuplicatedName    bool `json:"checkDuplicatedName" xmlrpc:"checkduplicatedname"`
+	ActionOnDuplicatedName int  `json:"actionOnDuplicatedName" xmlrpc:"actiononduplicatedname"`
 	//VersionId              int               `json:"versionId" `
 	Version int `json:"version"`
 	//ParentId               int               `json:"parentId"`
@@ -27,28 +27,28 @@ type TestCaseRequest struct {
 	//Platform               Platform          `json:"platform"`
 	//FeatureId              int               `json:"featureId"`
 	//Keywords               []string          `json:"keywords"`
-	DevKey string `json:"devKey" xml:"devKey"`
+	DevKey string `json:"devKey" xmlrpc:"devKey"`
 }
 
 type TestCaseResponse struct {
-	Id                     int            `json:"id" xml:"testcaseid"`
-	Name                   string         `json:"name" xml:"testcasename"`
-	TestSuiteId            int            `json:"testSuiteId" xml:"testsuiteid"`
-	TestProjectId          int            `json:"testProjectId" xml:"testprojectid"`
-	AuthorLogin            string         `json:"authorLogin" xml:"authorlogin"`
-	Summary                string         `json:"summary" xml:"summary"`
-	Steps                  []TestCaseStep `json:"steps" xml:"steps"`
-	Preconditions          string         `json:"preconditions" xml:"preconditions"`
-	TestCaseStatus         int            `json:"testCaseStatus" xml:"status"`
-	TestImportance         int            `json:"testImportance" xml:"importance"`
-	ExecutionType          int            `json:"executionType" xml:"executiontype"`
+	Id                     int            `json:"id" xmlrpc:"testcaseid"`
+	Name                   string         `json:"name" xmlrpc:"testcasename"`
+	TestSuiteId            int            `json:"testSuiteId" xmlrpc:"testsuiteid"`
+	TestProjectId          int            `json:"testProjectId" xmlrpc:"testprojectid"`
+	AuthorLogin            string         `json:"authorLogin" xmlrpc:"authorlogin"`
+	Summary                string         `json:"summary" xmlrpc:"summary"`
+	Steps                  []TestCaseStep `json:"steps" xmlrpc:"steps"`
+	Preconditions          string         `json:"preconditions" xmlrpc:"preconditions"`
+	TestCaseStatus         int            `json:"testCaseStatus" xmlrpc:"status"`
+	TestImportance         int            `json:"testImportance" xmlrpc:"importance"`
+	ExecutionType          int            `json:"executionType" xmlrpc:"executiontype"`
 	ExecutionOrder         int            `json:"executionOrder"`
-	Order                  int            `json:"order" xml:"order"`
-	InternalId             int            `json:"internalId" xml:"internalid"`
-	ExternalId             int            `json:"externalId" xml:"externalid"`
+	Order                  int            `json:"order" xmlrpc:"order"`
+	InternalId             int            `json:"internalId" xmlrpc:"internalid"`
+	ExternalId             int            `json:"externalId" xmlrpc:"externalid"`
 	FullExternalId         string         `json:"fullExternalId"`
-	CheckDuplicatedName    bool           `json:"checkDuplicatedName" xml:"checkduplicatedname"`
-	ActionOnDuplicatedName int            `json:"actionOnDuplicatedName" xml:"actiononduplicatedname"`
+	CheckDuplicatedName    bool           `json:"checkDuplicatedName" xmlrpc:"checkduplicatedname"`
+	ActionOnDuplicatedName int            `json:"actionOnDuplicatedName" xmlrpc:"actiononduplicatedname"`
 	VersionId              int            `json:"versionId" `
 	Version                int            `json:"version"`
 	ParentId               int            `json:"parentId"`
@@ -62,11 +62,11 @@ type TestCaseResponse struct {
 type TestCaseStep struct {
 	Id                int    `json:"id"`
 	TestCaseVersionId int    `json:"testCaseVersionId"`
-	Number            int    `json:"number" xml:"step_number"`
-	Actions           string `json:"actions" xml:"actions"`
-	ExpectedResults   string `json:"expectedResults" xml:"expected_results"`
+	Number            int    `json:"number" xmlrpc:"step_number"`
+	Actions           string `json:"actions" xmlrpc:"actions"`
+	ExpectedResults   string `json:"expectedResults" xmlrpc:"expected_results"`
 	Active            bool   `json:"active"`
-	ExecutionType     int    `json:"executionType" xml:"execution_type"`
+	ExecutionType     int    `json:"executionType" xmlrpc:"execution_type"`
 }
 
 //
