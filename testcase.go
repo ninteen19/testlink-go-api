@@ -9,9 +9,9 @@ type TestCase struct {
 	Summary        string         `json:"summary" xml:"summary"`
 	Steps          []TestCaseStep `json:"steps" xml:"steps"`
 	Preconditions  string         `json:"preconditions" xml:"preconditions"`
-	TestCaseStatus TestCaseStatus `json:"testCaseStatus" xml:"status"`
-	TestImportance TestImportance `json:"testImportance" xml:"importance"`
-	ExecutionType  ExecutionType  `json:"executionType" xml:"executiontype"`
+	TestCaseStatus int            `json:"testCaseStatus" xml:"status"`
+	TestImportance int            `json:"testImportance" xml:"importance"`
+	ExecutionType  int            `json:"executionType" xml:"executiontype"`
 	//ExecutionOrder         int               `json:"executionOrder"`
 	Order      int `json:"order" xml:"order"`
 	InternalId int `json:"internalId" xml:"internalid"`
@@ -37,7 +37,7 @@ type TestCaseStep struct {
 	Actions         string `json:"actions" xml:"actions"`
 	ExpectedResults string `json:"expectedResults" xml:"expected_results"`
 	//Active            bool          `json:"active"`
-	ExecutionType ExecutionType `json:"executionType" xml:"execution_type"`
+	ExecutionType int `json:"executionType" xml:"execution_type"`
 }
 
 func (t *TestCase) ToMap() map[string]interface{} {
@@ -74,7 +74,7 @@ func ToTestCaseStepMaps(testCaseSteps *[]TestCaseStep) []map[string]interface{} 
 		putIfNotNull(testCaseStepMap, TestLinkParamStepNumber, testCaseStep.Number)
 		putIfNotNull(testCaseStepMap, TestLinkParamActions, testCaseStep.Actions)
 		putIfNotNull(testCaseStepMap, TestLinkParamExpectedResults, testCaseStep.ExpectedResults)
-		putIfNotNull(testCaseStepMap, TestLinkParamStepExecutionType, testCaseStep.ExecutionType.Value())
+		putIfNotNull(testCaseStepMap, TestLinkParamStepExecutionType, testCaseStep.ExecutionType)
 
 		testCaseStepMaps = append(testCaseStepMaps, testCaseStepMap)
 	}
