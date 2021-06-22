@@ -31,32 +31,32 @@ type TestCaseRequest struct {
 }
 
 type TestCaseResponse struct {
-	Id             int            `json:"id" xml:"testcaseid"`
-	Name           string         `json:"name" xml:"testcasename"`
-	TestSuiteId    int            `json:"testSuiteId" xml:"testsuiteid"`
-	TestProjectId  int            `json:"testProjectId" xml:"testprojectid"`
-	AuthorLogin    string         `json:"authorLogin" xml:"authorlogin"`
-	Summary        string         `json:"summary" xml:"summary"`
-	Steps          []TestCaseStep `json:"steps" xml:"steps"`
-	Preconditions  string         `json:"preconditions" xml:"preconditions"`
-	TestCaseStatus int            `json:"testCaseStatus" xml:"status"`
-	TestImportance int            `json:"testImportance" xml:"importance"`
-	ExecutionType  int            `json:"executionType" xml:"executiontype"`
-	//ExecutionOrder         int               `json:"executionOrder"`
-	Order      int `json:"order" xml:"order"`
-	InternalId int `json:"internalId" xml:"internalid"`
-	ExternalId int `json:"externalId" xml:"externalid"`
-	//FullExternalId         string            `json:"fullExternalId"`
-	CheckDuplicatedName    bool `json:"checkDuplicatedName" xml:"checkduplicatedname"`
-	ActionOnDuplicatedName int  `json:"actionOnDuplicatedName" xml:"actiononduplicatedname"`
-	//VersionId              int               `json:"versionId" `
-	Version int `json:"version"`
-	//ParentId               int               `json:"parentId"`
-	//CustomFields           []CustomField     `json:"customFields"`
-	//ExecutionStatus        ExecutionStatus   `json:"executionStatus"`
-	//Platform               Platform          `json:"platform"`
-	//FeatureId              int               `json:"featureId"`
-	//Keywords               []string          `json:"keywords"`
+	Id                     int            `json:"id" xml:"testcaseid"`
+	Name                   string         `json:"name" xml:"testcasename"`
+	TestSuiteId            int            `json:"testSuiteId" xml:"testsuiteid"`
+	TestProjectId          int            `json:"testProjectId" xml:"testprojectid"`
+	AuthorLogin            string         `json:"authorLogin" xml:"authorlogin"`
+	Summary                string         `json:"summary" xml:"summary"`
+	Steps                  []TestCaseStep `json:"steps" xml:"steps"`
+	Preconditions          string         `json:"preconditions" xml:"preconditions"`
+	TestCaseStatus         int            `json:"testCaseStatus" xml:"status"`
+	TestImportance         int            `json:"testImportance" xml:"importance"`
+	ExecutionType          int            `json:"executionType" xml:"executiontype"`
+	ExecutionOrder         int            `json:"executionOrder"`
+	Order                  int            `json:"order" xml:"order"`
+	InternalId             int            `json:"internalId" xml:"internalid"`
+	ExternalId             int            `json:"externalId" xml:"externalid"`
+	FullExternalId         string         `json:"fullExternalId"`
+	CheckDuplicatedName    bool           `json:"checkDuplicatedName" xml:"checkduplicatedname"`
+	ActionOnDuplicatedName int            `json:"actionOnDuplicatedName" xml:"actiononduplicatedname"`
+	VersionId              int            `json:"versionId" `
+	Version                int            `json:"version"`
+	ParentId               int            `json:"parentId"`
+	CustomFields           []CustomField  `json:"customFields"`
+	ExecutionStatus        string         `json:"executionStatus"`
+	Platform               Platform       `json:"platform"`
+	FeatureId              int            `json:"featureId"`
+	Keywords               []string       `json:"keywords"`
 }
 
 type TestCaseStep struct {
@@ -68,6 +68,7 @@ type TestCaseStep struct {
 	//Active            bool          `json:"active"`
 	ExecutionType int `json:"executionType" xml:"execution_type"`
 }
+
 //
 //func (t *TestCase) ToMap() map[string]interface{} {
 //	testCaseMap := map[string]interface{}{}
