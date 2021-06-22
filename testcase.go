@@ -17,8 +17,8 @@ type TestCase struct {
 	InternalId int `json:"internalId" xml:"internalid"`
 	ExternalId int `json:"externalId" xml:"externalid"`
 	//FullExternalId         string            `json:"fullExternalId"`
-	CheckDuplicatedName    bool              `json:"checkDuplicatedName" xml:"checkduplicatedname"`
-	ActionOnDuplicatedName ActionOnDuplicate `json:"actionOnDuplicatedName" xml:"actiononduplicatedname"`
+	CheckDuplicatedName    bool `json:"checkDuplicatedName" xml:"checkduplicatedname"`
+	ActionOnDuplicatedName int  `json:"actionOnDuplicatedName" xml:"actiononduplicatedname"`
 	//VersionId              int               `json:"versionId" `
 	Version int `json:"version"`
 	//ParentId               int               `json:"parentId"`
