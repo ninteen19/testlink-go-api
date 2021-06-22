@@ -7,8 +7,8 @@ import (
 )
 
 type ITestLinkOutbound interface {
-	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCase) (*testlink.TestCase, error)
-	TestLinkXmlRpcCall(method string, testCase *testlink.TestCase) (*testlink.TestCase, error)
+	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCaseRequest) (*testlink.TestCaseResponse, error)
+	TestLinkXmlRpcCall(method string, testCase *testlink.TestCaseRequest) (*testlink.TestCaseResponse, error)
 }
 
 var outbound ITestLinkOutbound
@@ -28,10 +28,10 @@ func Create(
 	internalId int,
 	checkDuplicatedName bool,
 	actionOnDuplicatedName testlink.ActionOnDuplicate,
-) (*testlink.TestCase, error) {
+) (*testlink.TestCaseResponse, error) {
 	var id int
 
-	testCase := &testlink.TestCase{
+	testCase := &testlink.TestCaseRequest{
 		Id:                     id,
 		Name:                   testCaseName,
 		TestSuiteId:            testSuiteId,
@@ -99,10 +99,10 @@ func CreateWithContext(
 	internalId int,
 	checkDuplicatedName bool,
 	actionOnDuplicatedName testlink.ActionOnDuplicate,
-) (*testlink.TestCase, error) {
+) (*testlink.TestCaseResponse, error) {
 	var id int
 
-	testCase := &testlink.TestCase{
+	testCase := &testlink.TestCaseRequest{
 		Id:                     id,
 		Name:                   testCaseName,
 		TestSuiteId:            testSuiteId,
