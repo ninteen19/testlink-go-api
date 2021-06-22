@@ -3,7 +3,9 @@ package outbounds
 import (
 	"alexejk.io/go-xmlrpc"
 	"context"
+	"fmt"
 	"github.com/ninteen19/testlink-go-api"
+	"strings"
 )
 
 type TestLinkOutbound struct {
@@ -24,5 +26,12 @@ func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, testCase *testlink.
 	client, _ := xmlrpc.NewClient(o.Config.Url)
 	result := &testlink.TestCaseResponse{}
 	err := client.Call(method, testCase, result)
+
+	enc := &xmlrpc.StdEncoder{}
+
+	buf := new(strings.Builder)
+	_ = enc.Encode(buf, method, testCase)
+	fmt.Println(buf.String())
+
 	return result, err
 }
