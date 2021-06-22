@@ -1,11 +1,9 @@
 package outbounds
 
 import (
-	"bytes"
+	"alexejk.io/go-xmlrpc"
 	"context"
-	"encoding/xml"
 	"github.com/ninteen19/testlink-go-api"
-	"net/http"
 )
 
 type TestLinkOutbound struct {
@@ -13,17 +11,18 @@ type TestLinkOutbound struct {
 }
 
 //ignore ctx for now
-func (o *TestLinkOutbound) TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCase) (*http.Response, error) {
+func (o *TestLinkOutbound) TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCase) (*testlink.TestCase, error) {
 	testCase.DevKey = o.Config.Key
-	buf, _ := xml.Marshal(testCase)
-	//if len(args) > 0 {
-	//	args[testlink.TestLinkParamDevKey] = o.Config.Key
-	//}
-	return http.Post(o.Config.Url, "text/xml", bytes.NewBuffer(buf))
+	client, _ := xmlrpc.NewClient(o.Config.Url)
+	result := &testlink.TestCase{}
+	_ = client.Call(method, testCase, result)
+	return result, nil
 }
 
-func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, testCase *testlink.TestCase) (*http.Response, error) {
+func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, testCase *testlink.TestCase) (*testlink.TestCase, error) {
 	testCase.DevKey = o.Config.Key
-	buf, _ := xml.Marshal(testCase)
-	return http.Post(o.Config.Url, "text/xml", bytes.NewBuffer(buf))
+	client, _ := xmlrpc.NewClient(o.Config.Url)
+	result := &testlink.TestCase{}
+	_ = client.Call(method, testCase, result)
+	return result, nil
 }

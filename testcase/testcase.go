@@ -2,15 +2,13 @@ package testcase
 
 import (
 	"context"
-	"github.com/divan/gorilla-xmlrpc/xml"
 	"github.com/ninteen19/testlink-go-api"
 	"github.com/ninteen19/testlink-go-api/outbounds"
-	"net/http"
 )
 
 type ITestLinkOutbound interface {
-	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCase) (*http.Response, error)
-	TestLinkXmlRpcCall(method string, testCase *testlink.TestCase) (*http.Response, error)
+	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCase) (*testlink.TestCase, error)
+	TestLinkXmlRpcCall(method string, testCase *testlink.TestCase) (*testlink.TestCase, error)
 }
 
 var outbound ITestLinkOutbound
@@ -63,26 +61,26 @@ func Create(
 	}
 
 	//executionData := testCase.ToMap()
-	resp, err := outbound.TestLinkXmlRpcCall(testlink.TestLinkMethodCreateTestCase, testCase)
-
-	if err != nil {
-		return nil, err
-	}
-
-	defer resp.Body.Close()
-	var respBodyArrays []interface{}
-	err = xml.DecodeClientResponse(resp.Body, &respBodyArrays)
-
-	if err != nil {
-		return nil, err
-	}
-
-	var respMap = respBodyArrays[0].(map[string]interface{})
-
-	testCase.Id = respMap["id"].(int)
-	testCase.Version = respMap["additionalInfo"].(map[string]int)["version_number"]
-
-	return testCase, nil
+	return outbound.TestLinkXmlRpcCall(testlink.TestLinkMethodCreateTestCase, testCase)
+	//
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//defer resp.Body.Close()
+	//var respBodyArrays []interface{}
+	//err = xml.DecodeClientResponse(resp.Body, &respBodyArrays)
+	//
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//var respMap = respBodyArrays[0].(map[string]interface{})
+	//
+	//testCase.Id = respMap["id"].(int)
+	//testCase.Version = respMap["additionalInfo"].(map[string]int)["version_number"]
+	//
+	//return testCase, nil
 }
 
 func CreateWithContext(
@@ -134,26 +132,26 @@ func CreateWithContext(
 	}
 
 	//executionData := testCase.ToMap()
-	resp, err := outbound.TestLinkXmlRpcCallWithContext(ctx, testlink.TestLinkMethodCreateTestCase, testCase)
-
-	if err != nil {
-		return nil, err
-	}
-
-	defer resp.Body.Close()
-	var respBodyArrays []interface{}
-	err = xml.DecodeClientResponse(resp.Body, &respBodyArrays)
-
-	if err != nil {
-		return nil, err
-	}
-
-	var respMap = respBodyArrays[0].(map[string]interface{})
-
-	testCase.Id = respMap["id"].(int)
-	testCase.Version = respMap["additionalInfo"].(map[string]int)["version_number"]
-
-	return testCase, nil
+	return outbound.TestLinkXmlRpcCallWithContext(ctx, testlink.TestLinkMethodCreateTestCase, testCase)
+	//
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//defer resp.Body.Close()
+	//var respBodyArrays []interface{}
+	//err = xml.DecodeClientResponse(resp.Body, &respBodyArrays)
+	//
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//var respMap = respBodyArrays[0].(map[string]interface{})
+	//
+	//testCase.Id = respMap["id"].(int)
+	//testCase.Version = respMap["additionalInfo"].(map[string]int)["version_number"]
+	//
+	//return testCase, nil
 }
 
 func init() {
