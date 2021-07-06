@@ -19,18 +19,9 @@ func (o *TestLinkOutbound) TestLinkXmlRpcCallWithContext(ctx context.Context, me
 	return result, err
 }
 
-func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, testCase *testlink.TestCaseRequest) (*testlink.TestCaseResponse, error) {
+func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, testCase *testlink.TestCaseRequest) error {
 	testCase.DevKey = o.Config.Key
 	client, _ := xmlrpc.NewClient(o.Config.Url, nil)
-	result := &testlink.TestCaseResponse{}
-	err := client.Call(method, testCase, result)
-
-
-	//enc := &xmlrpc.StdEncoder{}
-
-	//buf := new(strings.Builder)
-	//_ = enc.Encode(buf, method, testCase)
-	//fmt.Println(buf.String())
-
-	return result, err
+	//resp := interface {}
+	return client.Call(method, testCase, &[]struct{}{} )
 }
