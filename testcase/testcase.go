@@ -8,7 +8,7 @@ import (
 
 type ITestLinkOutbound interface {
 	TestLinkXmlRpcCallWithContext(ctx context.Context, method string, testCase *testlink.TestCaseRequest) (*testlink.TestCaseResponse, error)
-	TestLinkXmlRpcCall(method string, testCase *testlink.TestCaseRequest) (*testlink.TestCaseResponse, error)
+	TestLinkXmlRpcCall(method string, testCase *testlink.TestCaseRequest) error
 }
 
 var outbound ITestLinkOutbound
@@ -28,25 +28,25 @@ func Create(
 	internalId int,
 	checkDuplicatedName bool,
 	actionOnDuplicatedName testlink.ActionOnDuplicate,
-) (*testlink.TestCaseResponse, error) {
+) error {
 	var id int
 
 	testCase := &testlink.TestCaseRequest{
-		Id:                     id,
-		Name:                   testCaseName,
-		TestSuiteId:            testSuiteId,
-		TestProjectId:          testProjectId,
-		AuthorLogin:            authorLogin,
-		Summary:                summary,
-		Steps:                  steps,
-		Preconditions:          preconditions,
-		TestCaseStatus:         status.Value(),
-		TestImportance:         importance.Value(),
-		ExecutionType:          execution.Value(),
+		Id:             id,
+		Name:           testCaseName,
+		TestSuiteId:    testSuiteId,
+		TestProjectId:  testProjectId,
+		AuthorLogin:    authorLogin,
+		Summary:        summary,
+		Steps:          steps,
+		Preconditions:  preconditions,
+		TestCaseStatus: status.Value(),
+		TestImportance: importance.Value(),
+		ExecutionType:  execution.Value(),
 		//ExecutionOrder:         -1,
-		Order:                  order,
-		InternalId:             internalId,
-		ExternalId:             -1,
+		Order:      order,
+		InternalId: internalId,
+		ExternalId: -1,
 		//FullExternalId:         "",
 		CheckDuplicatedName:    checkDuplicatedName,
 		ActionOnDuplicatedName: actionOnDuplicatedName.Value(),
@@ -103,26 +103,26 @@ func CreateWithContext(
 	var id int
 
 	testCase := &testlink.TestCaseRequest{
-		Id:                     id,
-		Name:                   testCaseName,
-		TestSuiteId:            testSuiteId,
-		TestProjectId:          testProjectId,
-		AuthorLogin:            authorLogin,
-		Summary:                summary,
-		Steps:                  steps,
-		Preconditions:          preconditions,
-		TestCaseStatus:         status.Value(),
-		TestImportance:         importance.Value(),
-		ExecutionType:          execution.Value(),
+		Id:             id,
+		Name:           testCaseName,
+		TestSuiteId:    testSuiteId,
+		TestProjectId:  testProjectId,
+		AuthorLogin:    authorLogin,
+		Summary:        summary,
+		Steps:          steps,
+		Preconditions:  preconditions,
+		TestCaseStatus: status.Value(),
+		TestImportance: importance.Value(),
+		ExecutionType:  execution.Value(),
 		//ExecutionOrder:         -1,
-		Order:                  order,
-		InternalId:             internalId,
-		ExternalId:             -1,
+		Order:      order,
+		InternalId: internalId,
+		ExternalId: -1,
 		//FullExternalId:         "",
 		CheckDuplicatedName:    checkDuplicatedName,
 		ActionOnDuplicatedName: actionOnDuplicatedName.Value(),
 		//VersionId:              -1,
-		Version:                -1,
+		Version: -1,
 		//ParentId:               -1,
 		//CustomFields:           []testlink.CustomField{},
 		//ExecutionStatus:        testlink.ExecutionStatusNotRun,
