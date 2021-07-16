@@ -32,7 +32,12 @@ testlink.Conf.Url = "https://testlink.gdn-app.com/lib/api/xmlrpc/v1/xmlrpc.php"
 err := testcase.Create(testcase.CreateRequest)
 ```
 
+
+## Example
+
+https://github.com/ninteen19/confluence-to-test-link.git
+
 ## TODO
 
 - tests
-- add another API
+- add other testlink API
