@@ -6,7 +6,7 @@ import (
 )
 
 type ITestLinkOutbound interface {
-	TestLinkXmlRpcCall(method string, testCase *testlink.TestCaseRequest) error
+	TestLinkXmlRpcCall(method string, request testlink.BaseRequest, resp interface{}) error
 }
 
 var outbound ITestLinkOutbound
@@ -38,7 +38,7 @@ func Create(
 		ActionOnDuplicatedName: request.ActionOnDuplicatedName.Value(),
 	}
 
-	return outbound.TestLinkXmlRpcCall(testlink.TestLinkMethodCreateTestCase, testCase)
+	return outbound.TestLinkXmlRpcCall(testlink.TestLinkMethodCreateTestCase, testCase, &[]struct{}{})
 }
 
 func init() {

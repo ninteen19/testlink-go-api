@@ -30,6 +30,10 @@ type TestCaseRequest struct {
 	DevKey string `json:"devKey" xmlrpc:"devKey"`
 }
 
+func (r *TestCaseRequest) SetDevKey(devKey string) {
+	r.DevKey = devKey
+}
+
 type TestCaseStep struct {
 	Id                int    `json:"id"`
 	TestCaseVersionId int    `json:"testCaseVersionId"`

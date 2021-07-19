@@ -9,8 +9,8 @@ type TestLinkOutbound struct {
 	Config *testlink.Config
 }
 
-func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, testCase *testlink.TestCaseRequest) error {
-	testCase.DevKey = o.Config.Key
+func (o *TestLinkOutbound) TestLinkXmlRpcCall(method string, baseRequest testlink.BaseRequest, response interface{}) error {
+	baseRequest.SetDevKey(o.Config.Key)
 	client, _ := xmlrpc.NewClient(o.Config.Url, nil)
-	return client.Call(method, testCase, &[]struct{}{})
+	return client.Call(method, baseRequest, response)
 }

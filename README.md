@@ -6,7 +6,7 @@ This library is the abstraction of Testlink XmlRPC API for access from applicati
 
 ## Installation
 
-Install testlink-go-api with:
+Add testlink-go-api dependency using:
 
 ```sh
 go get -u github.com/ninteen19/testlink-go-api
@@ -18,6 +18,7 @@ Then, import it using:
 import (
     "github.com/ninteen19/testlink-go-api"
     "github.com/ninteen19/testlink-go-api/testcase"
+    "github.com/ninteen19/testlink-go-api/testproject"
 )
 ```
 
@@ -30,6 +31,9 @@ testlink.Conf.Url = "https://testlink.gdn-app.com/lib/api/xmlrpc/v1/xmlrpc.php"
 
 //Create testcase
 err := testcase.Create(testcase.CreateRequest)
+
+//Get testproject by projectName
+resp, err := testproject.Get(testproject.GetRequest)
 ```
 
 
